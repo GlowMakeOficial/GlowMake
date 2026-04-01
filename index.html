@@ -44,10 +44,11 @@ section{display:none;padding:20px;margin-top:50px}
 .active{display:block}
 
 .hero{margin-top:10px;text-align:center;padding:50px 20px;background:linear-gradient(135deg,#ff7eb3,#ff4d8d);color:#fff;border-radius:25px}
-.info,.mvv{margin-top:15px;background:#fff;padding:15px;border-radius:15px;box-shadow:0 4px 10px rgba(0,0,0,.05);font-size:14px}
+
+.info,.mvv,.avaliacoes{margin-top:15px;background:#fff;padding:15px;border-radius:15px;box-shadow:0 4px 10px rgba(0,0,0,.05);font-size:14px}
+
 .mvv h3{color:#ff4d8d;margin-top:10px}
 
-.avaliacoes{margin-top:15px;background:#fff;padding:15px;border-radius:15px;box-shadow:0 4px 10px rgba(0,0,0,.05)}
 .avaliacoes h3{margin-bottom:10px;color:#ff4d8d}
 .review{font-size:13px;margin-bottom:8px;opacity:.9}
 .review span{display:block}
@@ -80,8 +81,9 @@ section{display:none;padding:20px;margin-top:50px}
 
 input,select,button{width:100%;margin-top:10px;padding:10px;border-radius:10px;border:1px solid #ddd}
 
-.whats-btn{display:flex;align-items:center;gap:10px;background:#25d366;color:#fff;padding:12px;border-radius:12px;text-decoration:none;margin-top:10px;justify-content:center}
-.instagram-btn{display:flex;align-items:center;gap:10px;background:#E4405F;color:#fff;padding:12px;border-radius:12px;text-decoration:none;margin-top:10px;justify-content:center}
+.whats-btn,.instagram-btn{display:flex;align-items:center;gap:10px;padding:12px;border-radius:12px;text-decoration:none;margin-top:10px;justify-content:center}
+.whats-btn{background:#25d366;color:#fff}
+.instagram-btn{background:#E4405F;color:#fff}
 </style>
 </head>
 <body>
@@ -110,6 +112,20 @@ input,select,button{width:100%;margin-top:10px;padding:10px;border-radius:10px;b
   <div class="info">
     🚚 Entregamos para todo Brasil<br>
     📦 Retirada em loja disponível
+  </div>
+  <div class="mvv">
+    <h3>Missão</h3>
+    <p>Oferecer produtos de beleza acessíveis que elevem a autoestima.</p>
+    <h3>Visão</h3>
+    <p>Ser referência em beleza acessível.</p>
+    <h3>Valores</h3>
+    <p>Qualidade, confiança e autoestima.</p>
+  </div>
+  <div class="avaliacoes">
+    <h3>⭐ Avaliações de Clientes</h3>
+    <div class="review">★★★★★ <span>“Perfeitos, amei demais 😍”</span> – Juliana</div>
+    <div class="review">★★★★★ <span>“Chegou rápido e bem embalado!”</span> – Camila</div>
+    <div class="review">★★★★★ <span>“Muito barato e de qualidade ❤️”</span> – Fernanda</div>
   </div>
 </section>
 
@@ -143,7 +159,6 @@ input,select,button{width:100%;margin-top:10px;padding:10px;border-radius:10px;b
   </a>
 </section>
 
-<!-- Modal do Carrinho -->
 <div class="modal" id="modal">
   <h2>Seu Carrinho</h2>
   <div id="lista"></div>
