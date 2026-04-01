@@ -15,6 +15,7 @@ header{background:#fff;padding:10px 15px;display:flex;flex-direction:column;gap:
 header img{width:100px}
 
 .carrinho-top{background:linear-gradient(135deg,#25d366,#1da851);color:#fff;padding:10px 14px;border-radius:20px;font-size:12px;display:flex;flex-direction:column;align-items:center;cursor:pointer;box-shadow:0 4px 10px rgba(0,0,0,.15);transition:.2s}
+.carrinho-top:hover{transform:scale(1.05)}
 .carrinho-top:active{transform:scale(0.95)}
 
 nav{display:flex;gap:8px;overflow:auto}
@@ -40,7 +41,8 @@ section{display:none;padding:20px}
 .produto{background:#fff;border-radius:15px;padding:10px;text-align:center;box-shadow:0 4px 10px rgba(0,0,0,.08)}
 .produto img{width:100%;border-radius:10px}
 .preco{color:#ff4d8d;font-weight:bold;margin:5px 0}
-.btn{background:#ff4d8d;color:#fff;padding:8px;border-radius:20px;cursor:pointer}
+.btn{background:#ff4d8d;color:#fff;padding:8px;border-radius:20px;cursor:pointer;transition:.2s}
+.btn:hover{transform:scale(1.05)}
 
 .modal {
   position: fixed;
@@ -138,7 +140,9 @@ section{display:none;padding:20px}
   cursor: pointer;
   font-weight: 600;
   margin-top: 10px;
+  transition:.2s;
 }
+.finalizar:hover{transform:scale(1.05)}
 
 .fechar {
   width: 100%;
@@ -152,7 +156,15 @@ section{display:none;padding:20px}
 }
 
 input, select, button{width:100%;margin-top:10px;padding:10px;border-radius:10px;border:1px solid #ddd}
-.whats-btn{display:flex;align-items:center;gap:10px;background:#25d366;color:#fff;padding:12px;border-radius:12px;text-decoration:none;margin-top:10px;justify-content:center}
+
+.whats-btn{
+  display:flex;align-items:center;gap:10px;padding:12px;border-radius:12px;text-decoration:none;margin-top:10px;justify-content:center;color:#fff;font-weight:600;transition:.2s;
+}
+.whats-btn:hover{transform:scale(1.05);}
+.whats-btn i{height:20px;width:20px;}
+
+.whats-btn.whatsapp{background:#25d366;}
+.whats-btn.instagram{background:#E1306C;}
 </style>
 </head>
 <body>
@@ -226,9 +238,14 @@ input, select, button{width:100%;margin-top:10px;padding:10px;border-radius:10px
 
 <section id="contato">
   <h2>Contato</h2>
-  <a class="whats-btn" href="https://wa.me/5511939102961" target="_blank">
+  <a class="whats-btn whatsapp" href="https://wa.me/5511939102961" target="_blank">
     <i data-lucide="message-circle"></i>
     Falar no WhatsApp
+  </a>
+
+  <a class="whats-btn instagram" href="https://www.instagram.com/glowmakee10?igsh=Nno5MGVneXZ5N2c5" target="_blank">
+    <i data-lucide="instagram"></i>
+    Seguir no Instagram
   </a>
 </section>
 
