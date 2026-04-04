@@ -59,7 +59,7 @@ section{display:none;padding:20px}
 /* ITENS */
 .item{
   background:#fff;
-  padding:15px;
+  padding:10px;
   border-radius:16px;
   margin-bottom:10px;
   display:flex;
@@ -67,8 +67,11 @@ section{display:none;padding:20px}
   align-items:center;
   box-shadow:0 6px 15px rgba(0,0,0,.06);
 }
+.item img{width:50px;border-radius:8px;margin-right:10px}
+.item-info{flex:1;display:flex;flex-direction:column}
 
-.qtd-box{display:flex;gap:8px}
+/* QTD */
+.qtd-box{display:flex;gap:8px;align-items:center}
 .qtd-btn{
   background:#ff4d8d;
   color:#fff;
@@ -123,16 +126,12 @@ input,select{
 .insta{background:#E4405F}
 
 /* ANIMAÇÃO AVALIAÇÕES */
-@keyframes estrela{
-  0%{transform:scale(0);}
-  50%{transform:scale(1.2);}
-  100%{transform:scale(1);}
+@keyframes animarEstrelas{
+  0%{opacity:0;transform:translateY(-10px);}
+  50%{opacity:1;transform:translateY(0);}
+  100%{opacity:0.8;transform:translateY(-5px);}
 }
-.avaliacao span{display:inline-block;animation:estrela 1s ease-in-out infinite;}
-.avaliacao span:nth-child(2){animation-delay:.2s;}
-.avaliacao span:nth-child(3){animation-delay:.4s;}
-.avaliacao span:nth-child(4){animation-delay:.6s;}
-.avaliacao span:nth-child(5){animation-delay:.8s;}
+.avaliacao{animation:animarEstrelas 2s infinite;}
 </style>
 </head>
 
@@ -140,7 +139,8 @@ input,select{
 
 <header>
 <div class="topo">
-<img src="logo.jpg">
+<img src="logo.jpg" alt="Logo Glow Make">
+
 <div class="carrinho-top" onclick="abrirCarrinho()">
 🛒 <span id="qtd">0</span><br>R$ <span id="totalBtn">0.00</span>
 </div>
@@ -152,10 +152,8 @@ input,select{
 <a onclick="mostrar('sobre')">Sobre</a>
 <a onclick="mostrar('contato')">Contato</a>
 </nav>
-
 </header>
 
-<!-- SEÇÃO INÍCIO -->
 <section id="inicio" class="active">
 <div class="hero">
 <h2>Glow Make ✨</h2>
@@ -164,74 +162,56 @@ input,select{
 
 <div class="box">
 <h3>Missão</h3>
-<p>Elevar a autoestima de todos.</p>
+<p>Elevar a autoestima.</p>
 <h3>Visão</h3>
-<p>Ser referência em beleza e cuidado pessoal.</p>
+<p>Ser referência em beleza.</p>
 <h3>Valores</h3>
-<p>Qualidade, confiança e inovação.</p>
+<p>Qualidade e confiança.</p>
 </div>
 
 <div class="box">
 <h3>⭐ Avaliações</h3>
-<p class="avaliacao">
-<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-</p>
-<p class="avaliacao">
-<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-</p>
-<p class="avaliacao">
-<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-</p>
+<p class="avaliacao">★★★★★ “Perfeito!”</p>
+<p class="avaliacao">★★★★★ “Amei demais!”</p>
+<p class="avaliacao">★★★★★ “Entrega rápida!”</p>
+<p class="avaliacao">★★★★★ “Produtos de qualidade!”</p>
+<p class="avaliacao">★★★★★ “Recomendo muito!”</p>
 </div>
 </section>
 
-<!-- SEÇÃO SOBRE -->
 <section id="sobre">
 <div class="box">
-<h3>📍 Endereço da Loja</h3>
-<p>Rua da Beleza, 123 - São Paulo, SP</p>
+<h3>Endereço da Loja</h3>
+<p>Rua Exemplo, 123, Bairro Centro, Cidade - SP</p>
 </div>
 </section>
-<!-- SEÇÃO CATÁLOGO -->
+
 <section id="catalogo">
-<input type="text" id="busca" placeholder="🔍 Pesquise um produto..." onkeyup="filtrar()">
-<div class="catalogo" id="produtosCatalogo">
+<input type="text" id="busca" placeholder="Pesquisar produto..." onkeyup="filtrar()">
+<div class="catalogo" id="produtosLista">
 
-<!-- Exemplo de produto -->
-<div class="produto">
-<img src="imagens/Gloss_Labial_MaxLove.jpg">
-<h3>Gloss Labial MaxLove</h3>
-<p class="preco">R$10,00</p>
-<div class="btn" onclick="add('Gloss Labial MaxLove',10)">Comprar</div>
-</div>
+<!-- Produtos serão carregados via JS para não repetir HTML -->
 
-<div class="produto">
-<img src="imagens/Primer_MaxLove.jpg">
-<h3>Primer MaxLove</h3>
-<p class="preco">R$10,00</p>
-<div class="btn" onclick="add('Primer MaxLove',10)">Comprar</div>
-</div>
-
-<!-- Repita todos os produtos aqui como já tinha no código anterior -->
 </div>
 </section>
 
-<!-- SEÇÃO CONTATO -->
 <section id="contato">
 <a class="btn-contato whats" href="https://wa.me/5511939102961">
 <i data-lucide="message-circle"></i> WhatsApp
 </a>
+
 <a class="btn-contato insta" href="https://www.instagram.com/glowmakee10">
 <i data-lucide="instagram"></i> Instagram
 </a>
 </section>
 
-<!-- MODAL CARRINHO -->
 <div class="modal" id="modal">
 <h2>Seu Carrinho</h2>
+
 <div id="lista"></div>
 
 <input id="nomeCliente" placeholder="Seu nome">
+
 <select id="pagamento">
 <option>Forma de pagamento</option>
 <option>Pix</option>
@@ -261,99 +241,150 @@ input,select{
 lucide.createIcons();
 
 let carrinho=[];
+let produtos = [
+  {nome:"Gloss Labial MaxLove",preco:10,img:"imagens/Gloss_Labial_MaxLove.jpg"},
+  {nome:"Primer MaxLove",preco:10,img:"imagens/Primer_MaxLove.jpg"},
+  {nome:"Blush Líquido HudaBeauty",preco:10,img:"imagens/blush_liquido_hudabeauty.jpg"},
+  {nome:"Cola para Cílios",preco:5,img:"imagens/Cola_Cilios.jpg"},
+  {nome:"Batom",preco:10,img:"imagens/Batom.jpg"},
+  {nome:"Rímel",preco:10,img:"imagens/Rímel.jpg"},
+  {nome:"Delineador Teddy",preco:10,img:"imagens/Delineador_Teddy.jpg"},
+  {nome:"Iluminador Vivai",preco:10,img:"imagens/Iluminador_vivai.jpg"},
+  {nome:"Gloss Glitter",preco:10,img:"imagens/Gloss_Glitter.jpg"},
+  {nome:"Lip Gloss",preco:10,img:"imagens/Lip_Gloss.jpg"},
+  {nome:"Paleta de Sombras",preco:10,img:"imagens/Paleta_de_sombras.jpg"},
+  {nome:"Pó Compacto",preco:10,img:"imagens/Pó_compacto.jpg"},
+  {nome:"Pó para Sobrancelhas",preco:10,img:"imagens/Pó_para_sobrancelhas.jpg"},
+  {nome:"Gloss Labial - Max Love",preco:10,img:"imagens/GlossLabial_Maxlove.jpg"},
+  {nome:"Base - Pretty Natural",preco:10,img:"imagens/Base_prettyNatural.jpg"},
+  {nome:"Brilho Labial",preco:5,img:"imagens/Brilho_labial5.jpg"},
+  {nome:"Bruma Matte - Lady Beauty",preco:10,img:"imagens/Bruma_Matte_LadyBeauty.jpg"},
+  {nome:"Cola para Cílios - Macrilan",preco:10,img:"imagens/Cola_cilios_macrilan.jpg"},
+  {nome:"Corretivo Líquido",preco:10,img:"imagens/Corretivo_liquido.jpg"},
+  {nome:"Creme para a área dos olhos",preco:10,img:"imagens/Creme_para_a_area_dos_olhos.jpg"},
+  {nome:"Cílios Postiços - Sabrina Sato",preco:10,img:"imagens/Cílios_Posticos_SabrinaSato.jpg"},
+  {nome:"Escova Quadrada",preco:10,img:"imagens/Escova_Quadrada.jpg"},
+  {nome:"Escova de Cabelo",preco:10,img:"imagens/Escova_de_cabelo.jpg"},
+  {nome:"Escova de Maquiagem - Madala",preco:10,img:"imagens/Escova_de_maquiagem_Madala.jpg"},
+  {nome:"Esponja - Bela Manuela",preco:5,img:"imagens/Esponja_BelaManuela.jpg"},
+  {nome:"Folhas Anti Oleosidade",preco:5,img:"imagens/Folhas_antioleosidade5.jpg"},
+  {nome:"Pó de Banana",preco:10,img:"imagens/Pó_de_Banana.jpg"},
+  {nome:"Máscara Facial",preco:5,img:"imagens/Mascara_facial5.jpg"},
+  {nome:"Kit de Pincéis",preco:10,img:"imagens/Kit_Pinceis.jpg"},
+  {nome:"Sérum Facial - Max Love",preco:10,img:"imagens/Sérum_Facial_Maxlove.jpg"},
+  {nome:"Sabonete Facial Hidratante",preco:10,img:"imagens/Sabonete_facial_hidratante.jpg"},
+  {nome:"Touca",preco:5,img:"imagens/Touca.jpg"},
+  {nome:"Hidratante Labial - Beatyloo",preco:10,img:"imagens/Hidratante_Labial_Beautyloo.jpg"},
+  {nome:"Blush Facial",preco:10,img:"imagens/Brush_Facial.jpg"}
+];
 
+let listaProdutos=document.getElementById('produtosLista');
 function mostrar(sec){
 document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
 document.getElementById(sec).classList.add('active');
 }
-
-// ADICIONAR AO CARRINHO
-function add(nome,preco){
-let item=carrinho.find(i=>i.nome===nome);
-if(item){item.qtd++}else{carrinho.push({nome,preco,qtd:1})}
-update();
+function renderProdutos(lista){
+    listaProdutos.innerHTML = '';
+    lista.forEach(p => {
+        listaProdutos.innerHTML += `
+        <div class="produto">
+            <img src="${p.img}" alt="${p.nome}">
+            <h3>${p.nome}</h3>
+            <p class="preco">R$${p.preco.toFixed(2)}</p>
+            <div class="btn" onclick="add('${p.nome}',${p.preco},'${p.img}')">Comprar</div>
+        </div>`;
+    });
 }
+renderProdutos(produtos);
 
-// ATUALIZAR CARRINHO
-function update(){
-let lista=document.getElementById('lista');
-lista.innerHTML='';
-let subtotal=0;
-let qtd=0;
-
-carrinho.forEach((i,index)=>{
-subtotal+=i.preco*i.qtd;
-qtd+=i.qtd;
-
-lista.innerHTML+=`
-<div class="item">
-${i.nome}
-<div class="qtd-box">
-<button class="qtd-btn" onclick="diminuir(${index})">-</button>
-${i.qtd}
-<button class="qtd-btn" onclick="aumentar(${index})">+</button>
-</div>
-</div>`;
-});
-
-let tipo=document.getElementById('tipo').value;
-let frete=tipo==='entrega'?2:0;
-let total=subtotal+frete;
-
-document.getElementById('subtotal').innerText=subtotal.toFixed(2);
-document.getElementById('frete').innerText=frete.toFixed(2);
-document.getElementById('total').innerText=total.toFixed(2);
-document.getElementById('totalBtn').innerText=total.toFixed(2);
-document.getElementById('qtd').innerText=qtd;
-}
-
-function aumentar(i){carrinho[i].qtd++;update();}
-function diminuir(i){if(carrinho[i].qtd>1){carrinho[i].qtd--}else{carrinho.splice(i,1)}update();}
-
-function abrirCarrinho(){modal.style.display='block';update();}
-function fecharCarrinho(){modal.style.display='none';}
-
-// FINALIZAR PEDIDO
-function finalizar(){
-let nome=document.getElementById('nomeCliente').value||'Cliente';
-let pagamento=document.getElementById('pagamento').value;
-let tipo=document.getElementById('tipo').value;
-let endereco=document.getElementById('endereco').value;
-
-let texto='🛍️ Pedido Glow Make 💖%0A%0A';
-texto+=`👤 Nome: ${nome}%0A%0A`;
-texto+='📦 Itens:%0A';
-
-let subtotal=0;
-carrinho.forEach(i=>{
-texto+=`• ${i.nome} x${i.qtd}%0A`;
-subtotal+=i.preco*i.qtd;
-});
-
-let frete=tipo==='entrega'?2:0;
-let total=subtotal+frete;
-
-texto+=`%0A💰 Subtotal: R$${subtotal.toFixed(2)}%0A`;
-texto+=`🚚 Frete: R$${frete.toFixed(2)}%0A`;
-texto+=`💵 Total: R$${total.toFixed(2)}%0A`;
-texto+=`%0A💳 Pagamento: ${pagamento}%0A`;
-texto+=`📦 Tipo: ${tipo}%0A`;
-if(tipo==='entrega'){texto+=`📍 Endereço: ${endereco}%0A`;}
-texto+='%0A✨ Aguardo confirmação!';
-
-window.open('https://wa.me/5511939102961?text='+texto);
-}
-
-// FILTRAR PRODUTOS
 function filtrar(){
-let busca=document.getElementById('busca').value.toLowerCase();
-let produtos=document.querySelectorAll('#produtosCatalogo .produto');
-produtos.forEach(p=>{
-let nome=p.querySelector('h3').innerText.toLowerCase();
-p.style.display=nome.includes(busca)?'block':'none';
-});
+    let filtro = document.getElementById('busca').value.toLowerCase();
+    let filtrados = produtos.filter(p => p.nome.toLowerCase().includes(filtro));
+    renderProdutos(filtrados);
+}
+
+// CARRINHO
+function add(nome, preco, img){
+    let item = carrinho.find(i => i.nome === nome);
+    if(item){ item.qtd++ } 
+    else { carrinho.push({nome, preco, qtd:1, img}) }
+    update();
+}
+
+function update(){
+    let listaCarrinho=document.getElementById('lista');
+    listaCarrinho.innerHTML='';
+    let subtotal=0;
+    let qtdTotal=0;
+
+    carrinho.forEach((i,index)=>{
+        subtotal += i.preco*i.qtd;
+        qtdTotal += i.qtd;
+        listaCarrinho.innerHTML += `
+        <div class="item">
+            <img src="${i.img}" alt="${i.nome}">
+            <div class="item-info">
+                ${i.nome}
+                <div class="qtd-box">
+                    <button class="qtd-btn" onclick="diminuir(${index})">-</button>
+                    ${i.qtd}
+                    <button class="qtd-btn" onclick="aumentar(${index})">+</button>
+                </div>
+            </div>
+        </div>`;
+    });
+
+    let tipo=document.getElementById('tipo').value;
+    let frete = tipo==='entrega'?2:0;
+    let total = subtotal + frete;
+
+    document.getElementById('subtotal').innerText = subtotal.toFixed(2);
+    document.getElementById('frete').innerText = frete.toFixed(2);
+    document.getElementById('total').innerText = total.toFixed(2);
+    document.getElementById('totalBtn').innerText = total.toFixed(2);
+    document.getElementById('qtd').innerText = qtdTotal;
+}
+
+function aumentar(i){ carrinho[i].qtd++; update(); }
+function diminuir(i){ 
+    if(carrinho[i].qtd>1){ carrinho[i].qtd-- } 
+    else { carrinho.splice(i,1) }
+    update(); 
+}
+
+function abrirCarrinho(){ document.getElementById('modal').style.display='block'; update(); }
+function fecharCarrinho(){ document.getElementById('modal').style.display='none'; }
+
+function finalizar(){
+    let nome = document.getElementById('nomeCliente').value || 'Cliente';
+    let pagamento = document.getElementById('pagamento').value;
+    let tipo = document.getElementById('tipo').value;
+    let endereco = document.getElementById('endereco').value;
+
+    let texto='🛍️ Pedido Glow Make 💖%0A%0A';
+    texto+=`👤 Nome: ${nome}%0A%0A`;
+    texto+='📦 Itens:%0A';
+
+    let subtotal = 0;
+    carrinho.forEach(i => {
+        texto+=`• ${i.nome} x${i.qtd}%0A`;
+        subtotal += i.preco*i.qtd;
+    });
+
+    let frete = tipo==='entrega'?2:0;
+    let total = subtotal + frete;
+
+    texto+=`%0A💰 Subtotal: R$${subtotal.toFixed(2)}%0A`;
+    texto+=`🚚 Frete: R$${frete.toFixed(2)}%0A`;
+    texto+=`💵 Total: R$${total.toFixed(2)}%0A`;
+    texto+=`%0A💳 Pagamento: ${pagamento}%0A`;
+    texto+=`📦 Tipo: ${tipo}%0A`;
+    if(tipo==='entrega'){ texto+=`📍 Endereço: ${endereco}%0A`; }
+    texto+='%0A✨ Aguardo confirmação!';
+
+    window.open('https://wa.me/5511939102961?text='+texto);
 }
 </script>
+
 </body>
 </html>
-
