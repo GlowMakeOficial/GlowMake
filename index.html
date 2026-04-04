@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Glow Make</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/lucide@latest"></script>
 
@@ -19,18 +18,12 @@ header img{width:100px}
 
 /* CARRINHO FIXO */
 .carrinho-top{
-  position:fixed;
-  top:15px;
-  right:15px;
+  position:fixed; top:15px; right:15px;
   background:linear-gradient(135deg,#25d366,#1da851);
-  color:#fff;
-  padding:12px;
-  border-radius:15px;
-  text-align:center;
-  width:85px;
-  box-shadow:0 5px 15px rgba(0,0,0,.2);
-  cursor:pointer;
-  z-index:1000;
+  color:#fff; padding:12px;
+  border-radius:15px; text-align:center;
+  width:85px; box-shadow:0 5px 15px rgba(0,0,0,.2);
+  cursor:pointer; z-index:1000;
 }
 
 /* NAV */
@@ -54,71 +47,29 @@ section{display:none;padding:20px}
 .btn{background:#ff4d8d;color:#fff;padding:8px;border-radius:20px;margin-top:5px;cursor:pointer}
 
 /* MODAL */
-.modal{position:fixed;top:0;left:0;width:100%;height:100%;background:#f9f9f9;padding:20px;display:none;overflow:auto;z-index:2000}
+#modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);display:none;justify-content:center;align-items:center;z-index:2000}
+.modal-conteudo{background:#fff;padding:20px;border-radius:15px;width:90%;max-width:400px;max-height:80%;overflow:auto;position:relative}
+.modal-conteudo h3{text-align:center;margin-bottom:15px}
+.modal-conteudo .fechar{position:absolute;top:10px;right:10px;cursor:pointer;font-size:18px}
 
-/* ITENS */
-.item{
-  background:#fff;
-  padding:10px;
-  border-radius:16px;
-  margin-bottom:10px;
-  display:flex;
-  justify-content:flex-start;
-  align-items:center;
-  box-shadow:0 6px 15px rgba(0,0,0,.06);
-}
-.item img{width:50px;height:50px;margin-right:10px;border-radius:8px;}
+/* ITENS DO CARRINHO */
+.item{background:#fff;padding:10px;border-radius:16px;margin-bottom:10px;display:flex;align-items:center;box-shadow:0 6px 15px rgba(0,0,0,.06)}
+.item img{width:50px;height:50px;margin-right:10px;border-radius:8px}
 .qtd-box{display:flex;gap:8px;align-items:center}
-.qtd-btn{
-  background:#ff4d8d;
-  color:#fff;
-  border:none;
-  width:28px;
-  height:28px;
-  border-radius:8px;
-  cursor:pointer;
-}
+.qtd-btn{background:#ff4d8d;color:#fff;border:none;width:28px;height:28px;border-radius:8px;cursor:pointer}
 
 /* INPUTS */
-input,select{
-  width:100%;
-  margin-top:10px;
-  padding:12px;
-  border-radius:12px;
-  border:1px solid #eee;
-}
+input,select{width:100%;margin-top:10px;padding:12px;border-radius:12px;border:1px solid #eee}
 
 /* RESUMO */
-.resumo{
-  margin-top:15px;
-  background:#fff;
-  padding:15px;
-  border-radius:15px;
-}
+.resumo{margin-top:15px;background:#fff;padding:15px;border-radius:15px}
 .total-final{font-weight:bold;font-size:18px}
 
 /* BOTÃO FINALIZAR */
-.finalizar{
-  background:linear-gradient(135deg,#25d366,#1da851);
-  color:#fff;
-  padding:14px;
-  border:none;
-  border-radius:12px;
-  margin-top:10px;
-  width:100%;
-}
+.finalizar{background:linear-gradient(135deg,#25d366,#1da851);color:#fff;padding:14px;border:none;border-radius:12px;margin-top:10px;width:100%}
 
 /* CONTATO */
-.btn-contato{
-  display:flex;
-  justify-content:center;
-  gap:10px;
-  padding:12px;
-  border-radius:12px;
-  margin-top:10px;
-  color:#fff;
-  text-decoration:none;
-}
+.btn-contato{display:flex;justify-content:center;gap:10px;padding:12px;border-radius:12px;margin-top:10px;color:#fff;text-decoration:none}
 .whats{background:#25d366}
 .insta{background:#E4405F}
 
@@ -129,13 +80,10 @@ input,select{
 .avaliacoes p:nth-child(3){animation-delay:0.8s}
 .avaliacoes p:nth-child(4){animation-delay:1.1s}
 .avaliacoes p:nth-child(5){animation-delay:1.4s}
-
-@keyframes aparecer{
-  to{opacity:1;transform:translateY(0);}
-}
+@keyframes aparecer{to{opacity:1;transform:translateY(0);}}
 
 /* PESQUISA */
-#busca{width:100%;padding:10px;margin-bottom:15px;border-radius:12px;border:1px solid #eee;}
+#busca{width:100%;padding:10px;margin-bottom:15px;border-radius:12px;border:1px solid #eee}
 </style>
 </head>
 
@@ -143,7 +91,7 @@ input,select{
 
 <header>
 <div class="topo">
-<img src="logo.jpg">
+<img src="logo.jpg" alt="Logo">
 
 <div class="carrinho-top" onclick="abrirCarrinho()">
 🛒 <span id="qtd">0</span><br>R$ <span id="totalBtn">0.00</span>
@@ -165,12 +113,9 @@ input,select{
 </div>
 
 <div class="box">
-<h3>Missão</h3>
-<p>Elevar a autoestima.</p>
-<h3>Visão</h3>
-<p>Ser referência em beleza.</p>
-<h3>Valores</h3>
-<p>Qualidade e confiança.</p>
+<h3>Missão</h3><p>Elevar a autoestima.</p>
+<h3>Visão</h3><p>Ser referência em beleza.</p>
+<h3>Valores</h3><p>Qualidade e confiança.</p>
 </div>
 
 <div class="box avaliacoes">
@@ -205,7 +150,12 @@ input,select{
 <div class="produto"><img src="imagens/Base_prettyNatural.jpg"><h3>Base - Pretty Natural</h3><p class="preco">R$10,00</p><div class="btn" onclick="add('Base - Pretty Natural',10,'imagens/Base_prettyNatural.jpg')">Comprar</div></div>
 <div class="produto"><img src="imagens/Brilho_labial5.jpg"><h3>Brilho Labial</h3><p class="preco">R$5,00</p><div class="btn" onclick="add('Brilho Labial',5,'imagens/Brilho_labial5.jpg')">Comprar</div></div>
 <div class="produto"><img src="imagens/Bruma_Matte_LadyBeauty.jpg"><h3>Bruma Matte - Lady Beauty</h3><p class="preco">R$10,00</p><div class="btn" onclick="add('Bruma Matte - Lady Beauty',10,'imagens/Bruma_Matte_LadyBeauty.jpg')">Comprar</div></div>
+
+</div>
+</section>
 <!-- PRODUTOS 18 a 34 -->
+<div class="catalogo">
+
 <div class="produto"><img src="imagens/Cola_cilios_macrilan.jpg"><h3>Cola para Cílios - Macrilan</h3><p class="preco">R$10,00</p><div class="btn" onclick="add('Cola para Cílios - Macrilan',10,'imagens/Cola_cilios_macrilan.jpg')">Comprar</div></div>
 <div class="produto"><img src="imagens/Corretivo_liquido.jpg"><h3>Corretivo Líquido</h3><p class="preco">R$10,00</p><div class="btn" onclick="add('Corretivo Líquido',10,'imagens/Corretivo_liquido.jpg')">Comprar</div></div>
 <div class="produto"><img src="imagens/Creme_para_a_area_dos_olhos.jpg"><h3>Creme Para a Área dos Olhos</h3><p class="preco">R$10,00</p><div class="btn" onclick="add('Creme para a área dos olhos',10,'imagens/Creme_para_a_area_dos_olhos.jpg')">Comprar</div></div>
@@ -224,8 +174,37 @@ input,select{
 <div class="produto"><img src="imagens/Hidratante_Labial_Beautyloo.jpg"><h3>Hidratante Labial - Beautyloo</h3><p class="preco">R$10,00</p><div class="btn" onclick="add('Hidratante Labial - Beautyloo',10,'imagens/Hidratante_Labial_Beautyloo.jpg')">Comprar</div></div>
 <div class="produto"><img src="imagens/Brush_Facial.jpg"><h3>Blush Facial</h3><p class="preco">R$10,00</p><div class="btn" onclick="add('Blush Facial',10,'imagens/Brush_Facial.jpg')">Comprar</div></div>
 
-</div> <!-- fim catalogo -->
-</section>
+</div>
+
+<!-- MODAL CARRINHO -->
+<div id="modal">
+<div class="modal-conteudo">
+<span class="fechar" onclick="fecharCarrinho()">×</span>
+<h3>🛒 Seu Carrinho</h3>
+
+<div id="lista"></div>
+
+<div class="resumo">
+<p>Subtotal: R$ <span id="subtotal">0.00</span></p>
+<p>Frete: R$ <span id="frete">0.00</span></p>
+<p class="total-final">Total: R$ <span id="total">0.00</span></p>
+
+<select id="tipo">
+<option value="retirada">Retirada</option>
+<option value="entrega">Entrega</option>
+</select>
+
+<input type="text" id="nomeCliente" placeholder="Nome">
+<input type="text" id="endereco" placeholder="Endereço (se entrega)">
+<select id="pagamento">
+<option value="pix">Pix</option>
+<option value="dinheiro">Dinheiro</option>
+<option value="cartao">Cartão</option>
+</select>
+
+<button class="finalizar" onclick="finalizar()">Finalizar Pedido</button>
+</div>
+</div>
 
 <section id="sobre">
 <div class="box">
@@ -238,7 +217,6 @@ input,select{
 <a class="btn-contato whats" href="https://wa.me/5511939102961">
 <i data-lucide="message-circle"></i> WhatsApp
 </a>
-
 <a class="btn-contato insta" href="https://www.instagram.com/glowmakee10">
 <i data-lucide="instagram"></i> Instagram
 </a>
@@ -248,14 +226,13 @@ input,select{
 lucide.createIcons();
 
 let carrinho = [];
+const modal = document.getElementById('modal');
 
-// Mostra a seção selecionada
 function mostrar(sec){
   document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
   document.getElementById(sec).classList.add('active');
 }
 
-// Adiciona produto ao carrinho com foto
 function add(nome, preco, img){
   let item = carrinho.find(i => i.nome === nome);
   if(item){ item.qtd++; } 
@@ -263,20 +240,18 @@ function add(nome, preco, img){
   update();
 }
 
-// Atualiza carrinho e totais
 function update(){
   let lista = document.getElementById('lista');
-  if(lista) lista.innerHTML = '';
-  let subtotal = 0;
-  let qtd = 0;
+  lista.innerHTML = '';
+  let subtotal = 0, qtd = 0;
 
-  carrinho.forEach((i, index) => {
-    subtotal += i.preco * i.qtd;
+  carrinho.forEach((i,index)=>{
+    subtotal += i.preco*i.qtd;
     qtd += i.qtd;
 
-    if(lista) lista.innerHTML += `
+    lista.innerHTML += `
       <div class="item">
-        <img src="${i.img}">
+        <img src="${i.img}" alt="${i.nome}">
         <div style="flex:1">${i.nome}</div>
         <div class="qtd-box">
           <button class="qtd-btn" onclick="diminuir(${index})">-</button>
@@ -286,66 +261,51 @@ function update(){
       </div>`;
   });
 
-  let tipo = document.getElementById('tipo') ? document.getElementById('tipo').value : 'retirada';
-  let frete = tipo === 'entrega' ? 2 : 0;
-  let total = subtotal + frete;
+  let tipo = document.getElementById('tipo').value;
+  let frete = tipo==='entrega'?2:0;
+  let total = subtotal+frete;
 
-  if(document.getElementById('subtotal')) document.getElementById('subtotal').innerText = subtotal.toFixed(2);
-  if(document.getElementById('frete')) document.getElementById('frete').innerText = frete.toFixed(2);
-  if(document.getElementById('total')) document.getElementById('total').innerText = total.toFixed(2);
+  document.getElementById('subtotal').innerText = subtotal.toFixed(2);
+  document.getElementById('frete').innerText = frete.toFixed(2);
+  document.getElementById('total').innerText = total.toFixed(2);
   document.getElementById('totalBtn').innerText = total.toFixed(2);
   document.getElementById('qtd').innerText = qtd;
 }
 
-// Aumenta quantidade
 function aumentar(i){ carrinho[i].qtd++; update(); }
+function diminuir(i){ if(carrinho[i].qtd>1){carrinho[i].qtd--;} else{carrinho.splice(i,1);} update(); }
 
-// Diminui quantidade
-function diminuir(i){
-  if(carrinho[i].qtd > 1){ carrinho[i].qtd--; } 
-  else { carrinho.splice(i,1); }
-  update();
-}
+function abrirCarrinho(){ modal.style.display='flex'; update(); }
+function fecharCarrinho(){ modal.style.display='none'; }
 
-// Abrir e fechar carrinho
-function abrirCarrinho(){ if(modal) modal.style.display = 'block'; update(); }
-function fecharCarrinho(){ if(modal) modal.style.display = 'none'; }
-
-// Finalizar pedido via WhatsApp
 function finalizar(){
-  let nome = document.getElementById('nomeCliente') ? document.getElementById('nomeCliente').value : 'Cliente';
-  let pagamento = document.getElementById('pagamento') ? document.getElementById('pagamento').value : 'Não informado';
-  let tipo = document.getElementById('tipo') ? document.getElementById('tipo').value : 'retirada';
-  let endereco = document.getElementById('endereco') ? document.getElementById('endereco').value : 'Não informado';
+  let nome=document.getElementById('nomeCliente').value||'Cliente';
+  let pagamento=document.getElementById('pagamento').value;
+  let tipo=document.getElementById('tipo').value;
+  let endereco=document.getElementById('endereco').value;
 
-  let texto = '🛍️ Pedido Glow Make 💖%0A%0A';
-  texto += `👤 Nome: ${nome}%0A%0A`;
-  texto += '📦 Itens:%0A';
-
-  let subtotal = 0;
-  carrinho.forEach(i=>{ texto += `• ${i.nome} x${i.qtd}%0A`; subtotal += i.preco * i.qtd; });
-
-  let frete = tipo === 'entrega' ? 2 : 0;
-  let total = subtotal + frete;
-
-  texto += `%0A💰 Subtotal: R$${subtotal.toFixed(2)}%0A`;
-  texto += `🚚 Frete: R$${frete.toFixed(2)}%0A`;
-  texto += `💵 Total: R$${total.toFixed(2)}%0A`;
-  texto += `%0A💳 Pagamento: ${pagamento}%0A`;
-  texto += `📦 Tipo: ${tipo}%0A`;
-
-  if(tipo === 'entrega'){ texto += `📍 Endereço: ${endereco}%0A`; }
-  texto += '%0A✨ Aguardo confirmação!';
-
-  window.open('https://wa.me/5511939102961?text=' + texto);
+  let texto='🛍️ Pedido Glow Make 💖%0A%0A';
+  texto+=`👤 Nome: ${nome}%0A%0A`;
+  texto+='📦 Itens:%0A';
+  let subtotal=0;
+  carrinho.forEach(i=>{texto+=`• ${i.nome} x${i.qtd}%0A`; subtotal+=i.preco*i.qtd;});
+  let frete=tipo==='entrega'?2:0;
+  let total=subtotal+frete;
+  texto+=`%0A💰 Subtotal: R$${subtotal.toFixed(2)}%0A`;
+  texto+=`🚚 Frete: R$${frete.toFixed(2)}%0A`;
+  texto+=`💵 Total: R$${total.toFixed(2)}%0A`;
+  texto+=`%0A💳 Pagamento: ${pagamento}%0A`;
+  texto+=`📦 Tipo: ${tipo}%0A`;
+  if(tipo==='entrega'){texto+=`📍 Endereço: ${endereco}%0A`;}
+  texto+='%0A✨ Aguardo confirmação!';
+  window.open('https://wa.me/5511939102961?text='+texto);
 }
 
-// Pesquisa no catálogo
 function pesquisar(){
-  let filtro = document.getElementById('busca').value.toLowerCase();
-  document.querySelectorAll('.catalogo .produto').forEach(prod => {
-    let nome = prod.querySelector('h3').innerText.toLowerCase();
-    prod.style.display = nome.includes(filtro) ? 'block' : 'none';
+  let filtro=document.getElementById('busca').value.toLowerCase();
+  document.querySelectorAll('.catalogo .produto').forEach(prod=>{
+    let nome=prod.querySelector('h3').innerText.toLowerCase();
+    prod.style.display=nome.includes(filtro)?'block':'none';
   });
 }
 </script>
